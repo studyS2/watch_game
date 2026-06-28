@@ -381,8 +381,8 @@ function getDogTargetPosition(target, side){
   const xOffset = side === "leftOfWatch" ? -DOG_ATTACK_SIDE_OFFSET : DOG_ATTACK_SIDE_OFFSET;
 
   return {
-    left: centerX + xOffset - dog.offsetWidth / 2,
-    top: centerY - dog.offsetHeight / 2
+    left: Math.round(centerX + xOffset - dog.offsetWidth / 2),
+    top: Math.round(centerY - dog.offsetHeight / 2)
   };
 }
 
