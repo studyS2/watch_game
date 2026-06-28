@@ -223,7 +223,7 @@ function showPlayingDialog(){
   // 게임 진행 중 기본 대화창: 아래쪽 시계를 가리지 않도록 클릭은 통과시킵니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
-<div style="position:relative">
+<div class="dialogBox">
 <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
@@ -234,9 +234,9 @@ function showDoneDialog(){
   // 강민재가 시계 어지르기를 멈춘 뒤에도 아래쪽 시계를 클릭할 수 있게 합니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
-<div style="position:relative">
+<div class="dialogBox">
 <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
-<img src="image/dog_done.png" style="position:absolute;right:22px;top:-62px;width:150px;">
+<img src="image/dog_done.png" class="dialogDog dialogDogDone">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
@@ -248,16 +248,16 @@ function showIntro(){
 
   if(item.speaker){
     dialog.innerHTML = `
-      <div style="position:relative">
+      <div class="dialogBox speakingBox">
         <img src="image/chatwindow_speaking.png" style="width:100%;display:block;">
-        <img src="image/dog_ha.png" style="position:absolute;right:22px;top:-52px;width:140px;">
+        <img src="image/dog_ha.png" class="dialogDog dialogDogHa">
         <div class="speakerName">${item.speaker}</div>
         <div id="dialogText" class="dialogText speakingText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
   }else{
     dialog.innerHTML = `
-      <div style="position:relative">
+      <div class="dialogBox">
         <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
         <div id="dialogText" class="dialogText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
@@ -381,8 +381,8 @@ function getDogTargetPosition(target, side){
   const xOffset = side === "leftOfWatch" ? -DOG_ATTACK_SIDE_OFFSET : DOG_ATTACK_SIDE_OFFSET;
 
   return {
-    left: Math.round(centerX + xOffset - dog.offsetWidth / 2),
-    top: Math.round(centerY - dog.offsetHeight / 2)
+    left: centerX + xOffset - dog.offsetWidth / 2,
+    top: centerY - dog.offsetHeight / 2
   };
 }
 
