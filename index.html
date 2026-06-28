@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>[너희들은 변호됐다] 팬게임 ~나는 결벽증이 아니야~</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="coverScreen" aria-label="표지 화면. 아무 곳이나 클릭하면 시작합니다.">
+  <!-- 표지 이미지를 넣으려면 HTML 파일과 같은 폴더에 cover.png 라는 이름으로 저장하세요. -->
+  <img id="coverImage" src="image/cover.png" alt="게임 표지" onerror="this.style.display='none'; document.getElementById('coverFallback').style.display='flex';">
+  <div id="coverFallback" style="display:none;">
+    <div class="title">나는 결벽증이 아니야</div>
+    <div class="tap">아무 곳이나 클릭해서 시작</div>
+  </div>
+</div>
+<div id="game">
+  <div id="hud">
+    <div id="levelText">Level 1</div>
+    <div id="timeText">15.0</div>
+  </div>
+
+  <div id="top">
+    <div id="barWrap"><div id="bar"></div></div>
+    <div id="board"></div>
+  </div>
+
+  <div id="dog"><img id="dogSprite" src="image/dog_right_stop.png" alt=""></div>
+
+  <div id="dialog"></div>
+  <div class="controls">
+    <button id="nextBtn">다음</button>
+  </div>
+</div>
+
+<div id="overlay" class="hidden"></div>
+
+<script src="js/game.js"></script>
+</body>
+</html>

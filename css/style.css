@@ -1,0 +1,328 @@
+/* =========================
+   폰트 설정
+   font 폴더 안에 아래 파일을 넣어두면 적용됩니다.
+   ========================= */
+@font-face{
+  font-family:"PretendardSemiBold";
+  src:url("../font/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight:600;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:"DungGeunMo";
+  src:url("../font/DungGeunMo.woff2") format("woff2");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
+/* 
+  style.css
+  화면 디자인을 담당하는 파일입니다.
+  이미지 파일은 image/ 폴더에 넣고, CSS에서는 ../image/파일명.png 형식으로 불러옵니다.
+*/
+
+:root{
+    --bg:#2f3742;
+    --panel:#d7d2c7;
+    --watch:#eeeeea;
+    --text:#ffffff;
+    --dialog:#181b20;
+    --dialog-border:#9b8b69;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+    touch-action:manipulation;
+  }
+  #game{
+    width:min(430px,100vw);
+    height:100vh;
+    min-height:760px;
+    padding:0;
+    position:relative;
+    overflow:hidden;
+    background-image:url("../image/background.png");
+    background-size:cover;
+    background-position:center top;
+    background-repeat:no-repeat;
+  }
+  #hud{
+    position:absolute;
+    left:20px;
+    top:38px;
+    width:92px;
+    height:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+    color:#333;
+    background:rgba(255,255,255,.85);
+    z-index:5;
+  }
+  #timeText{
+    display:none;
+  }
+  #top{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+  }
+  #barWrap{
+    position:absolute;
+    left:20px;
+    top:130px;
+    width:28px;
+    height:470px;
+    border:2px solid #9ba0a8;
+    border-radius:12px;
+    background:rgba(255,255,255,.85);
+    overflow:hidden;
+    z-index:5;
+  }
+  #bar{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:limegreen;
+    transition:height .08s linear, background .15s linear;
+  }
+  #board{
+    position:absolute;
+    left:50%;
+    top:130px;
+    transform:translateX(-50%);
+    width:82%;
+    height:500px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(3,1fr);
+    gap:8px;
+    padding:22px 18px;
+    background:rgba(255,255,255,.88);
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    z-index:4;
+  }
+  .watch{
+    height:auto;
+    min-height:90px;
+    background:transparent;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
+    color:#111;
+    user-select:none;
+    cursor:pointer;
+    box-shadow:none;
+    transform-origin:center center;
+    transition:transform .15s ease;
+  }
+  .watch.hit{
+    animation:shake .3s;
+  }
+  @keyframes shake{
+    0%{filter:brightness(1.1)}
+    20%{translate:-4px 0}
+    40%{translate:4px 0}
+    60%{translate:-3px 0}
+    80%{translate:3px 0}
+    100%{translate:0 0;filter:brightness(1)}
+  }
+  #dog{
+    position:absolute;
+    font-size:34px;
+    left:36px;
+    top:530px;
+    transition:left .38s linear, top .38s linear;
+    z-index:20;
+    pointer-events:none;
+    filter:drop-shadow(0 3px 2px rgba(0,0,0,.35));
+  }
+  #dialog{
+    position:absolute;
+    left:20px;
+    right:20px;
+    bottom:24px;
+    min-height:120px;
+    cursor:pointer;
+    z-index:30;
+    color:#333;
+    line-height:1.55;
+    white-space:pre-line;
+  }
+  #speaker{
+    display:inline-block;
+    margin-bottom:5px;
+    padding:2px 8px;
+    border:1px solid var(--dialog-border);
+    border-radius:8px;
+    color:#f0d49a;
+    font-size:14px;
+  }
+  .controls{
+    display:none;
+  }
+  button{
+    padding:9px 14px;
+    margin:4px;
+    border:0;
+    border-radius:8px;
+    background:#e2d2ad;
+    color:#111;
+    font-weight:700;
+    cursor:pointer;
+  }
+  button:active{transform:translateY(1px)}
+  #overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    z-index:50;
+    padding:24px;
+  }
+  .hidden{display:none!important}
+  .big{
+    font-size:52px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-shadow:0 4px 0 rgba(0,0,0,.3);
+  }
+  .resultText{
+    margin:18px 0;
+    max-width:360px;
+    line-height:1.6;
+    background:rgba(24,27,32,.92);
+    border:2px solid var(--dialog-border);
+    border-radius:12px;
+    padding:14px;
+  }
+  .sub{
+    font-size:14px;
+    opacity:.8;
+  }
+
+  #coverScreen{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:#2f3742;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    padding:0;
+  }
+  #coverImage{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  #coverFallback{
+    width:min(430px,100vw);
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:24px;
+    background:linear-gradient(180deg,#44505c,#2f3742);
+  }
+  #coverFallback .title{
+    font-size:34px;
+    font-weight:900;
+    margin-bottom:18px;
+  }
+  #coverFallback .tap{
+    font-size:16px;
+    opacity:.85;
+    animation:blink 1.2s infinite;
+  }
+  @keyframes blink{
+    0%,100%{opacity:.35}
+    50%{opacity:1}
+  }
+
+
+  .dialogText{
+    position:absolute;
+    left:28px;
+    top:42px;
+    right:34px;
+    color:#333;
+    font-size:20px;
+    line-height:1.55;
+    white-space:pre-line;
+  }
+  .speakerName{
+    position:absolute;
+    left:28px;
+    top:12px;
+    font-weight:bold;
+    color:#333;
+  }
+  .speakingText{
+    top:54px;
+  }
+  .nextFeet{
+    position:absolute;
+    right:22px;
+    bottom:22px;
+    width:28px;
+    opacity:0;
+    pointer-events:none;
+  }
+  .nextFeet.show{
+    animation:feetBlink .85s infinite;
+  }
+  @keyframes feetBlink{
+    0%,100%{opacity:.25; transform:scale(.96);}
+    50%{opacity:1; transform:scale(1.08);}
+  }
+
+/* =========================
+   대화창 폰트 적용
+   ========================= */
+
+/* 말하는 사람 이름 */
+.speakerName{
+  font-family:"PretendardSemiBold", system-ui, sans-serif;
+}
+
+/* 대사 / 나래이션 */
+.dialogText{
+  font-family:"DungGeunMo", monospace;
+}
+
+/* CLEAR/FAIL 이후 차주한 대사창 */
+.resultText{
+  font-family:"DungGeunMo", monospace;
+}
+
+/* CLEAR/FAIL 이후 말하는 사람 이름 */
+.resultText b{
+  font-family:"PretendardSemiBold", system-ui, sans-serif;
+}
