@@ -220,7 +220,8 @@ function skipTyping(){
 }
 
 function showPlayingDialog(){
-  // 게임 진행 중 기본 대화창: dog_done 없이 "……"만 표시
+  // 게임 진행 중 기본 대화창: 아래쪽 시계를 가리지 않도록 클릭은 통과시킵니다.
+  dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
 <div style="position:relative">
 <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
@@ -230,7 +231,8 @@ function showPlayingDialog(){
 }
 
 function showDoneDialog(){
-  // 강민재가 시계 어지르기를 멈춘 뒤에만 dog_done 표시
+  // 강민재가 시계 어지르기를 멈춘 뒤에도 아래쪽 시계를 클릭할 수 있게 합니다.
+  dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
 <div style="position:relative">
 <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
@@ -241,6 +243,7 @@ function showDoneDialog(){
 }
 
 function showIntro(){
+  dialog.style.pointerEvents = "auto";
   const item = introDialogs[introIndex];
 
   if(item.speaker){
@@ -620,6 +623,7 @@ window.restartGame = function(){
   hideActiveDog();
   overlay.classList.add("hidden");
   nextBtn.style.display = "inline-block";
+  dialog.style.pointerEvents = "auto";
   createBoard();
   updateHud();
   clearTypingTimer();
