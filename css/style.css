@@ -147,13 +147,11 @@
   }
   #dog{
     position:absolute;
-    font-size:34px;
     left:36px;
     top:530px;
     transition:left .38s linear, top .38s linear;
     z-index:20;
     pointer-events:none;
-    filter:drop-shadow(0 3px 2px rgba(0,0,0,.35));
   }
   #dialog{
     position:absolute;
