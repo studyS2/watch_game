@@ -236,7 +236,7 @@ function showDoneDialog(){
   dialog.innerHTML=`
 <div style="position:relative">
 <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
-<img src="image/dog_done.png" style="position:absolute;right:-4px;top:-100px;width:155px;">
+<img src="image/dog_done.png" style="position:absolute;right:22px;top:-62px;width:150px;">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
@@ -250,7 +250,7 @@ function showIntro(){
     dialog.innerHTML = `
       <div style="position:relative">
         <img src="image/chatwindow_speaking.png" style="width:100%;display:block;">
-        <img src="image/dog_ha.png" style="position:absolute;right:-4px;top:-96px;width:145px;">
+        <img src="image/dog_ha.png" style="position:absolute;right:22px;top:-52px;width:140px;">
         <div class="speakerName">${item.speaker}</div>
         <div id="dialogText" class="dialogText speakingText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
