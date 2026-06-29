@@ -206,6 +206,14 @@ function setWatchRotation(w, deg){
 }
 
 
+function showBoard(){
+  board.classList.remove("boardHidden");
+}
+
+function hideBoard(){
+  board.classList.add("boardHidden");
+}
+
 function clearTypingTimer(){
   if(typingTimerId){
     clearInterval(typingTimerId);
@@ -280,6 +288,13 @@ function showDoneDialog(){
 
 function showIntro(){
   dialog.style.pointerEvents = "auto";
+
+  if(introIndex === 0){
+    hideBoard();
+  }else{
+    showBoard();
+  }
+
   const item = introDialogs[introIndex];
 
   if(item.speaker){
@@ -548,6 +563,7 @@ function dogAttack(){
 function startLevel(){
   clearExistingTimers();
   createBoard();
+  showBoard();
   showPlayingDialog();
   levelText.textContent = `Level ${level}`;
   timeText.textContent = TOTAL_TIME.toFixed(1);
@@ -661,6 +677,7 @@ window.restartGame = function(){
   nextBtn.style.display = "inline-block";
   dialog.style.pointerEvents = "auto";
   createBoard();
+  hideBoard();
   updateHud();
   clearTypingTimer();
   isTyping = false;
@@ -669,6 +686,7 @@ window.restartGame = function(){
 };
 
 createBoard();
+hideBoard();
 updateHud();
 setTimeout(() => {
   showIntro();
