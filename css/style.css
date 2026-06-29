@@ -287,29 +287,22 @@
     font-size:20px;
     line-height:1.55;
     white-space:pre-line;
-
-    /* 클튜 기준: 수평비율 93 / 문자간격 0.3 */
-    letter-spacing:0.3px;
-    transform:scaleX(0.93);
-    transform-origin:left top;
   }
   .speakerName{
     position:absolute;
-    left:30px;
-    top:18px;
+    left:28px;
+    top:12px;
     font-weight:bold;
     color:#333;
-    font-size:16px;
-    line-height:1;
   }
   .speakingText{
-    top:56px;
+    top:54px;
   }
   .nextFeet{
     position:absolute;
-    right:34px;
-    bottom:30px;
-    width:26px;
+    right:22px;
+    bottom:22px;
+    width:28px;
     opacity:0;
     pointer-events:none;
   }
@@ -347,32 +340,12 @@
 
 
 /* =========================
-   대화창 이미지 위치 보정
+   시계 이미지
+   원본 144x144 → 게임 표시 72x72
    ========================= */
-
-.dialogBox{
-  position:relative;
-}
-
-/* 직접 말하는 대화창은 나래이션 대화창보다 위로 떠 보였기 때문에 약간 아래로 내립니다.
-   dog_ha도 이 박스 안에 있으므로 함께 움직입니다. */
-.speakingBox{
-  transform:translateY(24px);
-}
-
-/* 대화창 위에 붙는 강민재 이미지 */
-.dialogDog{
-  position:absolute;
-  right:22px;
+.watch img{
+  width:72px;
+  height:72px;
+  display:block;
   pointer-events:none;
-}
-
-.dialogDogHa{
-  top:-34px;
-  width:140px;
-}
-
-.dialogDogDone{
-  top:-40px;
-  width:150px;
 }
