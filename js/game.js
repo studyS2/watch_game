@@ -50,6 +50,14 @@ const WATCH_IMAGES = [
   "image/watch/watch12.png"
 ];
 
+// watch_case.png 기준 내부 사각형에 맞춘 위치입니다.
+// left/top은 보관장 전체 크기 대비 비율입니다.
+const WATCH_POSITIONS = [
+  {left:9.41,  top:18.68}, {left:29.41, top:18.68}, {left:49.41, top:18.68}, {left:69.41, top:18.68},
+  {left:9.41,  top:47.58}, {left:29.41, top:47.58}, {left:49.41, top:47.58}, {left:69.41, top:47.58},
+  {left:9.41,  top:76.48}, {left:29.41, top:76.48}, {left:49.41, top:76.48}, {left:69.41, top:76.48}
+];
+
 // =========================
 // 게임 밸런스 설정
 // =========================
@@ -162,6 +170,10 @@ function createBoard(){
     const w = document.createElement("div");
     w.className = "watch";
     w.dataset.rot = "0";
+
+    const pos = WATCH_POSITIONS[i];
+    w.style.left = pos.left + "%";
+    w.style.top = pos.top + "%";
 
     const img = document.createElement("img");
     img.src = WATCH_IMAGES[i];
