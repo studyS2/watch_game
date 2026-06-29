@@ -32,6 +32,25 @@ const TOTAL_TIME = 15;
 const angles = [45, 90, 135, 225, 270, 315];
 
 // =========================
+// 시계 이미지 설정
+// watch1~watch12를 4개씩 3줄 순서대로 배치합니다.
+// =========================
+const WATCH_IMAGES = [
+  "image/watch/watch1.png",
+  "image/watch/watch2.png",
+  "image/watch/watch3.png",
+  "image/watch/watch4.png",
+  "image/watch/watch5.png",
+  "image/watch/watch6.png",
+  "image/watch/watch7.png",
+  "image/watch/watch8.png",
+  "image/watch/watch9.png",
+  "image/watch/watch10.png",
+  "image/watch/watch11.png",
+  "image/watch/watch12.png"
+];
+
+// =========================
 // 게임 밸런스 설정
 // =========================
 
@@ -142,8 +161,13 @@ function createBoard(){
   for(let i=0; i<12; i++){
     const w = document.createElement("div");
     w.className = "watch";
-    w.textContent = "⌚";
     w.dataset.rot = "0";
+
+    const img = document.createElement("img");
+    img.src = WATCH_IMAGES[i];
+    img.alt = `watch${i + 1}`;
+    w.appendChild(img);
+
     w.addEventListener("click", () => {
       if(!gameRunning) return;
 
@@ -223,7 +247,7 @@ function showPlayingDialog(){
   // 게임 진행 중 기본 대화창: 아래쪽 시계를 가리지 않도록 클릭은 통과시킵니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
-<div class="dialogBox">
+<div style="position:relative">
 <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
@@ -234,9 +258,9 @@ function showDoneDialog(){
   // 강민재가 시계 어지르기를 멈춘 뒤에도 아래쪽 시계를 클릭할 수 있게 합니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
-<div class="dialogBox">
+<div style="position:relative">
 <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
-<img src="image/dog_done.png" class="dialogDog dialogDogDone">
+<img src="image/dog_done.png" style="position:absolute;right:22px;top:-62px;width:150px;">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
@@ -248,16 +272,16 @@ function showIntro(){
 
   if(item.speaker){
     dialog.innerHTML = `
-      <div class="dialogBox speakingBox">
+      <div style="position:relative">
         <img src="image/chatwindow_speaking.png" style="width:100%;display:block;">
-        <img src="image/dog_ha.png" class="dialogDog dialogDogHa">
+        <img src="image/dog_ha.png" style="position:absolute;right:22px;top:-52px;width:140px;">
         <div class="speakerName">${item.speaker}</div>
         <div id="dialogText" class="dialogText speakingText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
   }else{
     dialog.innerHTML = `
-      <div class="dialogBox">
+      <div style="position:relative">
         <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
         <div id="dialogText" class="dialogText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
@@ -381,8 +405,8 @@ function getDogTargetPosition(target, side){
   const xOffset = side === "leftOfWatch" ? -DOG_ATTACK_SIDE_OFFSET : DOG_ATTACK_SIDE_OFFSET;
 
   return {
-    left: centerX + xOffset - dog.offsetWidth / 2,
-    top: centerY - dog.offsetHeight / 2
+    left: Math.round(centerX + xOffset - dog.offsetWidth / 2),
+    top: Math.round(centerY - dog.offsetHeight / 2)
   };
 }
 
