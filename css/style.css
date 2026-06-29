@@ -106,10 +106,9 @@
   }
   #board{
     position:absolute;
-    left:50%;
+    right:20px;
     top:80px;
-    transform:translateX(-50%);
-    width:min(340px, calc(100% - 90px));
+    width:min(360px, calc(100% - 70px));
     aspect-ratio:340 / 455;
     display:block;
     background-image:url("../image/watch_case.png");
@@ -339,12 +338,16 @@
 
 /* =========================
    시계 이미지
-   원본 144x144 → 게임 표시 약 72x72
-   보관장 크기가 줄어들면 시계도 함께 비율로 줄어듭니다.
+   원본 144x144 → 보관장 안에서 비율 표시
    ========================= */
 .watch img{
   width:100%;
   height:100%;
   display:block;
   pointer-events:none;
+}
+
+/* 첫 대사에서는 시계 보관장을 숨기고, 나레이션부터 보여줍니다. */
+.boardHidden{
+  display:none!important;
 }
