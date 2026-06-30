@@ -18,6 +18,14 @@
   font-display:swap;
 }
 
+@font-face{
+  font-family:"KCCGanpan";
+  src:url("../font/KCC-Ganpan.woff2") format("woff2");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
 /* 
   style.css
   화면 디자인을 담당하는 파일입니다.
@@ -61,16 +69,25 @@
   }
   #hud{
     position:absolute;
-    left:20px;
+    left:18px;
     top:38px;
-    width:92px;
-    height:30px;
+    min-width:88px;
+    height:34px;
+    padding:0 14px;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-weight:700;
-    color:#333;
-    background:rgba(255,255,255,.85);
+    font-family:"KCCGanpan", system-ui, sans-serif;
+    font-size:18px;
+    letter-spacing:.3px;
+    color:#4f5360;
+    background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(226,232,238,.88));
+    border:2px solid rgba(125,135,149,.85);
+    border-radius:13px;
+    box-shadow:
+      0 0 0 2px rgba(255,255,255,.75),
+      0 3px 0 rgba(87,94,106,.28),
+      inset 0 1px 0 rgba(255,255,255,.85);
     z-index:5;
   }
   #timeText{
@@ -214,10 +231,24 @@
   }
   .hidden{display:none!important}
   .big{
-    font-size:52px;
-    font-weight:900;
+    font-family:"KCCGanpan", system-ui, sans-serif;
+    font-size:54px;
+    line-height:1.05;
+    font-weight:400;
     letter-spacing:1px;
-    text-shadow:0 4px 0 rgba(0,0,0,.3);
+    color:#fff6cf;
+    -webkit-text-stroke:1.5px #4f5360;
+    text-shadow:
+      0 3px 0 #4f5360,
+      0 6px 0 rgba(0,0,0,.22),
+      0 0 14px rgba(255,255,255,.22);
+    padding:8px 18px 14px;
+    border-radius:20px;
+    background:rgba(61,70,82,.32);
+    box-shadow:
+      inset 0 0 0 2px rgba(255,255,255,.18),
+      0 0 0 2px rgba(255,255,255,.18);
+    white-space:pre-line;
   }
   .resultText{
     margin:18px 0;
@@ -355,3 +386,29 @@
 }
 
 /* V5.4 타임바 색상: Green #76D46A / Yellow #F3EF7C / Red #EB877B */
+
+
+/* =========================
+   레벨 / 결과 문구 폰트
+   ========================= */
+.startMessage{
+  color:#fff6cf;
+}
+
+.clearMessage{
+  color:#f7f0a7;
+  -webkit-text-stroke:1.5px #4f6b5b;
+  text-shadow:
+    0 3px 0 #4f6b5b,
+    0 6px 0 rgba(0,0,0,.22),
+    0 0 14px rgba(255,255,255,.25);
+}
+
+.failMessage{
+  color:#ffd2c7;
+  -webkit-text-stroke:1.5px #744f56;
+  text-shadow:
+    0 3px 0 #744f56,
+    0 6px 0 rgba(0,0,0,.22),
+    0 0 14px rgba(255,255,255,.18);
+}
