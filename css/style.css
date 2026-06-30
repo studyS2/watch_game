@@ -90,8 +90,8 @@
     width:14px;
     height:400px;
     border:2px solid #9ba0a8;
-    outline:1px solid rgba(255,255,255,.95);
-    outline-offset:1px;
+    outline:2px solid rgba(255,255,255,.98);
+    outline-offset:0;
     border-radius:999px;
     background:rgba(255,255,255,.88);
     overflow:hidden;
