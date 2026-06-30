@@ -350,7 +350,7 @@ dialog.addEventListener("click", () => {
 
 function centerMessage(text, callback){
   overlay.classList.remove("hidden");
-  overlay.innerHTML = `<div class="big">${text}</div>`;
+  overlay.innerHTML = `<div class="big startMessage">${text}</div>`;
   setTimeout(() => {
     overlay.classList.add("hidden");
     if(callback) callback();
@@ -569,7 +569,7 @@ function startLevel(){
   timeText.textContent = TOTAL_TIME.toFixed(1);
   moveDogToSafeCorner();
 
-  centerMessage(`LEVEL ${level}\nSTART`, () => {
+  centerMessage(`LEVEL ${level}\nSTART!`, () => {
     timeLeft = TOTAL_TIME;
     gameRunning = true;
     dogActive = true;
@@ -633,7 +633,7 @@ function finishLevel(){
 
   if(isClear){
     overlay.innerHTML = `
-      <div class="big">CLEAR!</div>
+      <div class="big clearMessage">CLEAR!</div>
       <div class="resultText">
         <b>&lt;차주한&gt;</b><br>
         내 방에 허락 없이 들어오지 마.<br>
@@ -644,7 +644,7 @@ function finishLevel(){
     `;
   }else{
     overlay.innerHTML = `
-      <div class="big">FAIL...</div>
+      <div class="big failMessage">FAIL...</div>
       <div class="resultText">
         <b>&lt;차주한&gt;</b><br>
         하아... 이 집에서 나가.
