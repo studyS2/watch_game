@@ -138,9 +138,9 @@ function getDogStopTime(){
 }
 
 const introDialogs = [
-  {speaker:"강민재", text:"결벽증이 아니라고요?"},
-  {speaker:null, text:"강민재는 시계 수납장을 열어서 보란 듯이 시계들을 여러 방향으로 돌리기 시작했다."},
-  {speaker:null, text:"이 무질서를 참을 수가 없어졌다."}
+  {type:"speaking", speaker:"강민재", text:"결벽증이 아니라고요?"},
+  {type:"narration", speaker:null, text:"강민재는 시계 수납장을 열어서 보란 듯이 시계들을 여러 방향으로 돌리기 시작했다."},
+  {type:"angry", speaker:null, text:"이 무질서를 참을 수가 없어졌다."}
 ];
 
 let introIndex = 0;
@@ -264,23 +264,23 @@ function skipTyping(){
 }
 
 function showPlayingDialog(){
-  // 게임 진행 중 기본 대화창: 아래쪽 시계를 가리지 않도록 클릭은 통과시킵니다.
+  // D: 게임 진행 중 기본 대화창. 클릭은 통과시킵니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
-<div style="position:relative">
-<img src="image/chatwindow_narration.png" style="width:100%;display:block;">
+<div class="dialogBox">
+<img class="dialogWindowImage" src="image/chatwindow_narration_fix2.png" alt="">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
 }
 
 function showDoneDialog(){
-  // 강민재가 시계 어지르기를 멈춘 뒤에도 아래쪽 시계를 클릭할 수 있게 합니다.
+  // E: 강민재가 시계 어지르기를 멈춘 뒤 dog_done 표시. 클릭은 통과시킵니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
-<div style="position:relative">
-<img src="image/chatwindow_narration.png" style="width:100%;display:block;">
-<img src="image/dog_done.png" style="position:absolute;right:22px;top:-62px;width:150px;">
+<div class="dialogBox">
+<img class="dialogWindowImage" src="image/chatwindow_narration_fix2.png" alt="">
+<img src="image/dog_done.png" class="dialogDog dialogDogDone" alt="">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
@@ -297,19 +297,29 @@ function showIntro(){
 
   const item = introDialogs[introIndex];
 
-  if(item.speaker){
+  if(item.type === "speaking"){
+    // A: 강민재 직접 대사
     dialog.innerHTML = `
-      <div style="position:relative">
-        <img src="image/chatwindow_speaking.png" style="width:100%;display:block;">
-        <img src="image/dog_ha.png" style="position:absolute;right:22px;top:-52px;width:140px;">
+      <div class="dialogBox">
+        <img class="dialogWindowImage" src="image/chatwindow_speaking_fix2.png" alt="">
+        <img src="image/dog_ha.png" class="dialogDog dialogDogHa" alt="">
         <div class="speakerName">${item.speaker}</div>
         <div id="dialogText" class="dialogText speakingText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
-  }else{
+  }else if(item.type === "angry"){
+    // C: 분노 나래이션
     dialog.innerHTML = `
-      <div style="position:relative">
-        <img src="image/chatwindow_narration.png" style="width:100%;display:block;">
+      <div class="dialogBox dialogAngry">
+        <img class="dialogWindowImage" src="image/chatwindow_narration_red.png" alt="">
+        <div id="dialogText" class="dialogText redText"></div>
+        <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
+      </div>`;
+  }else{
+    // B: 일반 나래이션
+    dialog.innerHTML = `
+      <div class="dialogBox">
+        <img class="dialogWindowImage" src="image/chatwindow_narration_fix2.png" alt="">
         <div id="dialogText" class="dialogText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
