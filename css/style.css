@@ -187,7 +187,7 @@
     left:20px;
     right:20px;
     bottom:24px;
-    min-height:120px;
+    min-height:132px;
     cursor:pointer;
     z-index:30;
     color:#333;
@@ -307,27 +307,37 @@
     position:absolute;
     left:28px;
     top:42px;
-    right:34px;
+    right:38px;
     color:#333;
-    font-size:20px;
+    font-size:18px;
     line-height:1.55;
     white-space:pre-line;
+    letter-spacing:0.3px;
+    transform:scaleX(0.93);
+    transform-origin:left top;
   }
   .speakerName{
     position:absolute;
-    left:28px;
-    top:12px;
+    left:32px;
+    top:15px;
+    width:96px;
+    height:26px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     font-weight:bold;
     color:#333;
+    font-size:16px;
+    line-height:1;
   }
   .speakingText{
-    top:54px;
+    top:56px;
   }
   .nextFeet{
     position:absolute;
-    right:22px;
-    bottom:22px;
-    width:28px;
+    right:38px;
+    bottom:26px;
+    width:24px;
     opacity:0;
     pointer-events:none;
   }
@@ -406,4 +416,58 @@
     0 3px 0 #744f56,
     0 6px 0 rgba(0,0,0,.22),
     0 0 14px rgba(255,255,255,.18);
+}
+
+
+/* =========================
+   V5.6 대화창 리뉴얼
+   A: 말풍선 / B,D,E: 나래이션 / C: 분노 나래이션
+   ========================= */
+
+.dialogBox{
+  position:relative;
+  width:100%;
+}
+
+.dialogBox > .dialogWindowImage{
+  width:100%;
+  display:block;
+}
+
+.dialogText.redText{
+  color:#ffffff;
+}
+
+.dialogDog{
+  position:absolute;
+  right:24px;
+  pointer-events:none;
+  z-index:2;
+}
+
+/* A: dog_ha */
+.dialogDogHa{
+  top:-40px;
+  width:140px;
+}
+
+/* E: dog_done */
+.dialogDogDone{
+  top:-44px;
+  width:150px;
+}
+
+/* C: 분노 대화창 등장 시 흔들림 */
+.dialogAngry{
+  animation:dialogTremble .32s linear 1;
+}
+
+@keyframes dialogTremble{
+  0%{transform:translate(0,0);}
+  15%{transform:translate(-2px,1px);}
+  30%{transform:translate(2px,-1px);}
+  45%{transform:translate(-2px,-1px);}
+  60%{transform:translate(2px,1px);}
+  75%{transform:translate(-1px,0);}
+  100%{transform:translate(0,0);}
 }
