@@ -364,9 +364,9 @@ function updateHud(){
   const p = Math.max(timeLeft / TOTAL_TIME, 0);
   bar.style.height = (p * 100) + "%"; // 아래는 유지, 위쪽부터 비어감
 
-  if(timeLeft <= 3) bar.style.background = "red";
-  else if(timeLeft <= 7) bar.style.background = "gold";
-  else bar.style.background = "limegreen";
+  if(timeLeft <= 3) bar.style.background = "#EB877B";
+  else if(timeLeft <= 7) bar.style.background = "#F3EF7C";
+  else bar.style.background = "#76D46A";
 }
 
 
