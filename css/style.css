@@ -243,11 +243,6 @@
       0 6px 0 rgba(0,0,0,.22),
       0 0 14px rgba(255,255,255,.22);
     padding:8px 18px 14px;
-    border-radius:20px;
-    background:rgba(61,70,82,.32);
-    box-shadow:
-      inset 0 0 0 2px rgba(255,255,255,.18),
-      0 0 0 2px rgba(255,255,255,.18);
     white-space:pre-line;
   }
   .resultText{
@@ -396,10 +391,10 @@
 }
 
 .clearMessage{
-  color:#f7f0a7;
-  -webkit-text-stroke:1.5px #4f6b5b;
+  color:#c7edf6;
+  -webkit-text-stroke:1.5px #4f6578;
   text-shadow:
-    0 3px 0 #4f6b5b,
+    0 3px 0 #4f6578,
     0 6px 0 rgba(0,0,0,.22),
     0 0 14px rgba(255,255,255,.25);
 }
