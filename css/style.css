@@ -443,7 +443,7 @@
 }
 
 .dialogDogDone{
-  width:150px;
+  width:140px;
 }
 
 /* C: 분노 대화창 흔들림. stage 자체를 흔들어도 하단 기준은 같은 stage 안에서 유지됩니다. */
