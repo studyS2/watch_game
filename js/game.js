@@ -278,23 +278,23 @@ function skipTyping(){
 function showPlayingDialog(){
   // D: 게임 진행 중 기본 대화창. 클릭은 통과시킵니다.
   dialog.style.pointerEvents = "none";
-  dialog.innerHTML=`
+  dialog.innerHTML = `
 <div class="dialogBox">
-<img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
-<div id="dialogText" class="dialogText">……</div>
-<img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
+  <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
+  <div id="dialogText" class="dialogText">……</div>
+  <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
 }
 
 function showDoneDialog(){
   // E: 강민재가 시계 어지르기를 멈춘 뒤 dog_done 표시. 클릭은 통과시킵니다.
   dialog.style.pointerEvents = "none";
-  dialog.innerHTML=`
+  dialog.innerHTML = `
 <div class="dialogBox">
-<img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
-<img src="image/dog_done.png" class="dialogDog dialogDogDone" alt="">
-<div id="dialogText" class="dialogText">……</div>
-<img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
+  <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
+  <img src="image/dog_done.png" class="dialogDog dialogDogDone" alt="">
+  <div id="dialogText" class="dialogText">……</div>
+  <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
 }
 
