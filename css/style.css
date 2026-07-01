@@ -433,7 +433,7 @@
 .dialogDog{
   position:absolute;
   right:24px;
-  bottom:calc(100% - 14px);
+  top:-96px;
   pointer-events:none;
   z-index:5;
 }
