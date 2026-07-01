@@ -165,7 +165,7 @@ let currentFeetElement = null;
 
 // =========================
 // 대화창 레이아웃 설정
-// 이미지 원본 기준: B/C/D/E는 top 30px, A는 top 100px부터 대사 시작
+// A/B/C/D/E는 모두 같은 .dialogStage 안에 배치합니다.
 // =========================
 const DIALOG_LAYOUT = {
   image: {
@@ -277,10 +277,10 @@ function skipTyping(){
 
 function showPlayingDialog(){
   // D: 게임 진행 중 기본 대화창. 클릭은 통과시킵니다.
-  // 플레이 중에는 다음 진행 표시용 발바닥을 보이지 않습니다.
+  // 플레이 중에는 발바닥을 보이지 않습니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML = `
-<div class="dialogBox">
+<div class="dialogStage">
   <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
   <div id="dialogText" class="dialogText">……</div>
 </div>`;
@@ -290,7 +290,7 @@ function showDoneDialog(){
   // E: 강민재가 시계 어지르기를 멈춘 뒤 dog_done 표시. 클릭은 통과시킵니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML = `
-<div class="dialogBox">
+<div class="dialogStage">
   <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
   <img src="image/dog_done.png" class="dialogDog dialogDogDone" alt="">
   <div id="dialogText" class="dialogText">……</div>
@@ -312,24 +312,24 @@ function showIntro(){
   if(item.type === "speaking"){
     // A: 강민재 직접 대사. 이름은 이미지 안에 포함되어 있습니다.
     dialog.innerHTML = `
-      <div class="dialogBox">
+      <div class="dialogStage">
         <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.speaking}" alt="">
         <img src="image/dog_ha.png" class="dialogDog dialogDogHa" alt="">
         <div id="dialogText" class="dialogText speakingText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
   }else if(item.type === "angry"){
-    // C: 분노 나래이션
+    // C: 분노 나레이션
     dialog.innerHTML = `
-      <div class="dialogBox dialogAngry">
+      <div class="dialogStage dialogAngry">
         <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.angry}" alt="">
         <div id="dialogText" class="dialogText redText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
   }else{
-    // B: 일반 나래이션
+    // B: 일반 나레이션
     dialog.innerHTML = `
-      <div class="dialogBox">
+      <div class="dialogStage">
         <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
         <div id="dialogText" class="dialogText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
