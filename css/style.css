@@ -305,9 +305,9 @@
 
   .dialogText{
     position:absolute;
-    left:28px;
-    top:42px;
-    right:38px;
+    left:30px;
+    top:30px;
+    right:30px;
     color:#333;
     font-size:18px;
     line-height:1.55;
@@ -317,26 +317,15 @@
     transform-origin:left top;
   }
   .speakerName{
-    position:absolute;
-    left:32px;
-    top:15px;
-    width:96px;
-    height:26px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    color:#333;
-    font-size:16px;
-    line-height:1;
+    display:none;
   }
   .speakingText{
-    top:56px;
+    top:100px;
   }
   .nextFeet{
     position:absolute;
-    right:38px;
-    bottom:26px;
+    right:30px;
+    bottom:22px;
     width:24px;
     opacity:0;
     pointer-events:none;
@@ -420,10 +409,9 @@
 
 
 /* =========================
-   V5.6 대화창 리뉴얼
-   A: 말풍선 / B,D,E: 나래이션 / C: 분노 나래이션
+   V5.6.1 통합 대화창
+   A: chatwindow_a / B,D,E: chatwindow_b / C: chatwindow_c
    ========================= */
-
 .dialogBox{
   position:relative;
   width:100%;
@@ -445,19 +433,16 @@
   z-index:2;
 }
 
-/* A: dog_ha */
 .dialogDogHa{
-  top:-40px;
+  top:-42px;
   width:140px;
 }
 
-/* E: dog_done */
 .dialogDogDone{
-  top:-44px;
+  top:-46px;
   width:150px;
 }
 
-/* C: 분노 대화창 등장 시 흔들림 */
 .dialogAngry{
   animation:dialogTremble .32s linear 1;
 }
