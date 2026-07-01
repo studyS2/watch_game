@@ -458,3 +458,24 @@
   75%{transform:translate(-1px,0);}
   100%{transform:translate(0,0);}
 }
+
+
+/* =========================
+   V5.6.3 발바닥 위치 단독 수정
+   대화창 내부 우하단에 고정합니다.
+   ========================= */
+.dialogBox .nextFeet,
+.dialogBox #nextFeet{
+  position:absolute !important;
+  right:22px !important;
+  bottom:18px !important;
+  width:24px !important;
+  height:auto !important;
+  opacity:0;
+  pointer-events:none;
+  z-index:5;
+}
+.dialogBox .nextFeet.show,
+.dialogBox #nextFeet.show{
+  animation:feetBlink .85s infinite;
+}
