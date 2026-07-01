@@ -187,7 +187,8 @@
     left:20px;
     right:20px;
     bottom:24px;
-    min-height:132px;
+    height:auto;
+    min-height:0;
     cursor:pointer;
     z-index:30;
     color:#333;
@@ -356,34 +357,32 @@
    대화창 내부 우하단에 고정합니다.
    ========================= */
 
-
 /* =========================
-   V5.7 대화창 시스템 정리
-   - A: chatwindow_a.png
-   - B/D/E: chatwindow_b.png
-   - C: chatwindow_c.png
+   V5.7.1 대화창 위치 수정
+   - A/B/C/D/E 모두 같은 하단 기준
+   - 발바닥은 대화창 안쪽 우하단
+   - dog_ha/dog_done은 대화창 위에 바로 붙임
    ========================= */
 
-/* #dialog의 하단 기준에 모든 대화창 이미지를 맞춥니다. */
+/* #dialog 하단에 모든 대화창 이미지를 고정합니다. */
 .dialogBox{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
+  position:relative;
   width:100%;
+  margin:0;
+  padding:0;
 }
 
-/* 대화창 이미지는 항상 dialogBox의 기준 크기를 결정합니다. */
+/* 이미지가 dialogBox의 실제 높이를 결정합니다. */
 .dialogWindowImage{
   width:100%;
   display:block;
 }
 
-/* 대사/나래이션 기본 글씨 */
+/* 대사/나레이션 기본 글씨: B/C/D/E */
 .dialogText{
   position:absolute;
   left:3.05%;
-  top:10.68%;
+  top:13%;
   right:-4.2%;
   color:#333;
   font-family:"DungGeunMo", monospace;
@@ -395,9 +394,9 @@
   transform-origin:left top;
 }
 
-/* A: 이미지 원본 기준 y=100px부터 대사 시작 */
+/* A: 말풍선 대사는 조금 더 위 */
 .dialogText.speakingText{
-  top:35.59%;
+  top:32%;
 }
 
 /* C: 분노 대화창 글씨 */
@@ -405,12 +404,12 @@
   color:#ffffff;
 }
 
-/* 발바닥: 대화창 이미지 안쪽 우하단 고정 */
+/* 발바닥: 대화창 내부 우하단 */
 .nextFeet,
 #nextFeet{
   position:absolute;
-  right:3.05%;
-  bottom:8%;
+  right:3.2%;
+  bottom:8.5%;
   width:24px;
   height:auto;
   opacity:0;
@@ -428,11 +427,11 @@
   50%{opacity:1; transform:scale(1.08);}
 }
 
-/* dog_ha / dog_done: 대화창 상단에 얹는 이미지 */
+/* dog_ha / dog_done: 대화창 상단 테두리에 붙임 */
 .dialogDog{
   position:absolute;
   right:24px;
-  bottom:calc(100% - 10px);
+  bottom:calc(100% - 1px);
   pointer-events:none;
   z-index:2;
 }
@@ -469,4 +468,3 @@
 .resultText b{
   font-family:"PretendardSemiBold", system-ui, sans-serif;
 }
-
