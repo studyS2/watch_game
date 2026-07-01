@@ -194,15 +194,6 @@
     line-height:1.55;
     white-space:pre-line;
   }
-  #speaker{
-    display:inline-block;
-    margin-bottom:5px;
-    padding:2px 8px;
-    border:1px solid var(--dialog-border);
-    border-radius:8px;
-    color:#f0d49a;
-    font-size:14px;
-  }
   .controls{
     display:none;
   }
@@ -301,66 +292,11 @@
     0%,100%{opacity:.35}
     50%{opacity:1}
   }
-
-
-  .dialogText{
-    position:absolute;
-    left:3.05%;
-    top:10.68%;
-    right:3.05%;
-    color:#333;
-    font-size:18px;
-    line-height:1.55;
-    white-space:pre-line;
-    letter-spacing:0.3px;
-    transform:scaleX(0.93);
-    transform-origin:left top;
-  }
-  .speakerName{
-    display:none;
-  }
-  .speakingText{
-    top:35.59%;
-  }
-  .nextFeet{
-    position:absolute;
-    right:3.05%;
-    bottom:8.5%;
-    width:24px;
-    opacity:0;
-    pointer-events:none;
-  }
-  .nextFeet.show{
-    animation:feetBlink .85s infinite;
-  }
   @keyframes feetBlink{
     0%,100%{opacity:.25; transform:scale(.96);}
     50%{opacity:1; transform:scale(1.08);}
   }
 
-/* =========================
-   대화창 폰트 적용
-   ========================= */
-
-/* 말하는 사람 이름 */
-.speakerName{
-  font-family:"PretendardSemiBold", system-ui, sans-serif;
-}
-
-/* 대사 / 나래이션 */
-.dialogText{
-  font-family:"DungGeunMo", monospace;
-}
-
-/* CLEAR/FAIL 이후 차주한 대사창 */
-.resultText{
-  font-family:"DungGeunMo", monospace;
-}
-
-/* CLEAR/FAIL 이후 말하는 사람 이름 */
-.resultText b{
-  font-family:"PretendardSemiBold", system-ui, sans-serif;
-}
 
 
 /* =========================
@@ -412,6 +348,23 @@
    V5.6.1 통합 대화창
    A: chatwindow_a / B,D,E: chatwindow_b / C: chatwindow_c
    ========================= */
+
+
+
+/* =========================
+   V5.6.3 발바닥 위치 단독 수정
+   대화창 내부 우하단에 고정합니다.
+   ========================= */
+
+
+/* =========================
+   V5.7 대화창 시스템 정리
+   - A: chatwindow_a.png
+   - B/D/E: chatwindow_b.png
+   - C: chatwindow_c.png
+   ========================= */
+
+/* #dialog의 하단 기준에 모든 대화창 이미지를 맞춥니다. */
 .dialogBox{
   position:absolute;
   left:0;
@@ -420,15 +373,62 @@
   width:100%;
 }
 
-.dialogBox > .dialogWindowImage{
+/* 대화창 이미지는 항상 dialogBox의 기준 크기를 결정합니다. */
+.dialogWindowImage{
   width:100%;
   display:block;
 }
 
+/* 대사/나래이션 기본 글씨 */
+.dialogText{
+  position:absolute;
+  left:3.05%;
+  top:10.68%;
+  right:-4.2%;
+  color:#333;
+  font-family:"DungGeunMo", monospace;
+  font-size:18px;
+  line-height:1.55;
+  white-space:pre-line;
+  letter-spacing:0.3px;
+  transform:scaleX(0.93);
+  transform-origin:left top;
+}
+
+/* A: 이미지 원본 기준 y=100px부터 대사 시작 */
+.dialogText.speakingText{
+  top:35.59%;
+}
+
+/* C: 분노 대화창 글씨 */
 .dialogText.redText{
   color:#ffffff;
 }
 
+/* 발바닥: 대화창 이미지 안쪽 우하단 고정 */
+.nextFeet,
+#nextFeet{
+  position:absolute;
+  right:3.05%;
+  bottom:8%;
+  width:24px;
+  height:auto;
+  opacity:0;
+  pointer-events:none;
+  z-index:5;
+}
+
+.nextFeet.show,
+#nextFeet.show{
+  animation:feetBlink .85s infinite;
+}
+
+@keyframes feetBlink{
+  0%,100%{opacity:.25; transform:scale(.96);}
+  50%{opacity:1; transform:scale(1.08);}
+}
+
+/* dog_ha / dog_done: 대화창 상단에 얹는 이미지 */
 .dialogDog{
   position:absolute;
   right:24px;
@@ -445,6 +445,7 @@
   width:150px;
 }
 
+/* C: 분노 대화창 흔들림 */
 .dialogAngry{
   animation:dialogTremble .32s linear 1;
 }
@@ -459,23 +460,13 @@
   100%{transform:translate(0,0);}
 }
 
+/* CLEAR/FAIL 이후 차주한 대사창 */
+.resultText{
+  font-family:"DungGeunMo", monospace;
+}
 
-/* =========================
-   V5.6.3 발바닥 위치 단독 수정
-   대화창 내부 우하단에 고정합니다.
-   ========================= */
-.dialogBox .nextFeet,
-.dialogBox #nextFeet{
-  position:absolute !important;
-  right:22px !important;
-  bottom:18px !important;
-  width:24px !important;
-  height:auto !important;
-  opacity:0;
-  pointer-events:none;
-  z-index:5;
+/* CLEAR/FAIL 이후 말하는 사람 이름 */
+.resultText b{
+  font-family:"PretendardSemiBold", system-ui, sans-serif;
 }
-.dialogBox .nextFeet.show,
-.dialogBox #nextFeet.show{
-  animation:feetBlink .85s infinite;
-}
+
