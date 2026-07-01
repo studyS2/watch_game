@@ -163,6 +163,18 @@ let currentFullText = "";
 let currentTextElement = null;
 let currentFeetElement = null;
 
+// =========================
+// 대화창 레이아웃 설정
+// 이미지 원본 기준: B/C/D/E는 top 30px, A는 top 100px부터 대사 시작
+// =========================
+const DIALOG_LAYOUT = {
+  image: {
+    speaking: "image/chatwindow_a.png",
+    narration: "image/chatwindow_b.png",
+    angry: "image/chatwindow_c.png"
+  }
+};
+
 function createBoard(){
   board.innerHTML = "";
   watches = [];
@@ -268,7 +280,7 @@ function showPlayingDialog(){
   dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
 <div class="dialogBox">
-<img class="dialogWindowImage" src="image/chatwindow_narration_fix2.png" alt="">
+<img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
@@ -279,7 +291,7 @@ function showDoneDialog(){
   dialog.style.pointerEvents = "none";
   dialog.innerHTML=`
 <div class="dialogBox">
-<img class="dialogWindowImage" src="image/chatwindow_narration_fix2.png" alt="">
+<img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
 <img src="image/dog_done.png" class="dialogDog dialogDogDone" alt="">
 <div id="dialogText" class="dialogText">……</div>
 <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
@@ -298,12 +310,11 @@ function showIntro(){
   const item = introDialogs[introIndex];
 
   if(item.type === "speaking"){
-    // A: 강민재 직접 대사
+    // A: 강민재 직접 대사. 이름은 이미지 안에 포함되어 있습니다.
     dialog.innerHTML = `
       <div class="dialogBox">
-        <img class="dialogWindowImage" src="image/chatwindow_speaking_fix2.png" alt="">
+        <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.speaking}" alt="">
         <img src="image/dog_ha.png" class="dialogDog dialogDogHa" alt="">
-        <div class="speakerName">${item.speaker}</div>
         <div id="dialogText" class="dialogText speakingText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
@@ -311,7 +322,7 @@ function showIntro(){
     // C: 분노 나래이션
     dialog.innerHTML = `
       <div class="dialogBox dialogAngry">
-        <img class="dialogWindowImage" src="image/chatwindow_narration_red.png" alt="">
+        <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.angry}" alt="">
         <div id="dialogText" class="dialogText redText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
@@ -319,7 +330,7 @@ function showIntro(){
     // B: 일반 나래이션
     dialog.innerHTML = `
       <div class="dialogBox">
-        <img class="dialogWindowImage" src="image/chatwindow_narration_fix2.png" alt="">
+        <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
         <div id="dialogText" class="dialogText"></div>
         <img id="nextFeet" class="nextFeet" src="image/chatwindow_feet.png" alt="">
       </div>`;
