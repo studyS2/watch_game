@@ -277,12 +277,12 @@ function skipTyping(){
 
 function showPlayingDialog(){
   // D: 게임 진행 중 기본 대화창. 클릭은 통과시킵니다.
+  // 플레이 중에는 다음 진행 표시용 발바닥을 보이지 않습니다.
   dialog.style.pointerEvents = "none";
   dialog.innerHTML = `
 <div class="dialogBox">
   <img class="dialogWindowImage" src="${DIALOG_LAYOUT.image.narration}" alt="">
   <div id="dialogText" class="dialogText">……</div>
-  <img class="nextFeet show" src="image/chatwindow_feet.png" alt="">
 </div>`;
 }
 
