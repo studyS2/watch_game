@@ -305,9 +305,9 @@
 
   .dialogText{
     position:absolute;
-    left:30px;
-    top:30px;
-    right:30px;
+    left:3.05%;
+    top:10.68%;
+    right:3.05%;
     color:#333;
     font-size:18px;
     line-height:1.55;
@@ -320,12 +320,12 @@
     display:none;
   }
   .speakingText{
-    top:100px;
+    top:35.59%;
   }
   .nextFeet{
     position:absolute;
-    right:30px;
-    bottom:22px;
+    right:3.05%;
+    bottom:8.5%;
     width:24px;
     opacity:0;
     pointer-events:none;
@@ -413,7 +413,10 @@
    A: chatwindow_a / B,D,E: chatwindow_b / C: chatwindow_c
    ========================= */
 .dialogBox{
-  position:relative;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
   width:100%;
 }
 
@@ -429,17 +432,16 @@
 .dialogDog{
   position:absolute;
   right:24px;
+  bottom:calc(100% - 10px);
   pointer-events:none;
   z-index:2;
 }
 
 .dialogDogHa{
-  top:-42px;
   width:140px;
 }
 
 .dialogDogDone{
-  top:-46px;
   width:150px;
 }
 
