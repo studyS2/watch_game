@@ -348,7 +348,7 @@
   position:absolute;
   left:20px;
   right:20px;
-  bottom:24px;
+  bottom:50px;
   z-index:30;
   cursor:pointer;
   color:#333;
@@ -379,7 +379,7 @@
 .dialogText{
   position:absolute;
   left:3.05%;
-  top:13%;
+  top:8%;
   right:-4.2%;
   color:#333;
   font-family:"DungGeunMo", monospace;
