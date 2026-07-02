@@ -471,3 +471,85 @@
 .resultText b{
   font-family:"PretendardSemiBold", system-ui, sans-serif;
 }
+
+
+/* ===== Result dialog & buttons ===== */
+.resultDialog{
+  width:60%;
+  max-width:360px;
+  margin:18px auto 12px;
+  transform:scale(0.82);
+  transform-origin:center top;
+  position:relative;
+  opacity:0;
+}
+
+.resultDialog.show{
+  animation:resultPopIn .28s ease-out forwards;
+}
+
+.resultDialog img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.resultDialog .resultBody{
+  position:absolute;
+  left:18px;
+  right:18px;
+  top:58px;
+  bottom:72px;
+  color:#333;
+  font-family:"DungGeunMo", monospace;
+  font-size:19px;
+  letter-spacing:0.3px;
+  transform:scaleX(0.93);
+  transform-origin:left top;
+  line-height:1.55;
+  white-space:pre-line;
+  text-align:left;
+}
+
+.resultButtons{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:28px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  opacity:0;
+  pointer-events:none;
+}
+
+.resultButtons.show{
+  animation:resultButtonIn .25s ease-out forwards;
+  pointer-events:auto;
+}
+
+.resultBtn{
+  min-width:96px;
+  padding:8px 12px;
+  border:2px solid #9aa3af;
+  border-radius:10px;
+  background:linear-gradient(#eef1f4,#d8dde3);
+  color:#4a5058;
+  font-family:"PretendardSemiBold",system-ui,sans-serif;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.resultBtn:hover{background:linear-gradient(#f7f8fa,#e5e9ee);}
+.resultBtn:active{background:linear-gradient(#cfd5dc,#bcc4cd);}
+
+@keyframes resultPopIn{
+  from{opacity:0; transform:translateY(8px) scale(0.92);}
+  to{opacity:1; transform:translateY(0) scale(0.92);}
+}
+
+@keyframes resultButtonIn{
+  from{opacity:0; transform:translateY(6px);}
+  to{opacity:1; transform:translateY(0);}
+}
