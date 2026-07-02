@@ -272,7 +272,7 @@
     margin-bottom:18px;
   }
   #coverFallback .tap{
-    font-size:16px;
+    font-size:clamp(13px, 3.7vw, 16px);
     opacity:.85;
     animation:blink 1.2s infinite;
   }
@@ -475,11 +475,8 @@
 
 /* ===== Result dialog & buttons ===== */
 .resultDialog{
-  width:60%;
-  max-width:360px;
+  width:min(330px, 82vw);
   margin:18px auto 12px;
-  transform:scale(0.82);
-  transform-origin:center top;
   position:relative;
   opacity:0;
 }
@@ -502,7 +499,7 @@
   bottom:72px;
   color:#333;
   font-family:"DungGeunMo", monospace;
-  font-size:19px;
+  font-size:clamp(15px, 4.2vw, 19px);
   letter-spacing:0.3px;
   transform:scaleX(0.93);
   transform-origin:left top;
@@ -530,14 +527,14 @@
 }
 
 .resultBtn{
-  min-width:96px;
-  padding:8px 12px;
+  min-width:clamp(88px, 27vw, 120px);
+  padding:8px 10px;
   border:2px solid #9aa3af;
   border-radius:10px;
   background:linear-gradient(#eef1f4,#d8dde3);
   color:#4a5058;
   font-family:"PretendardSemiBold",system-ui,sans-serif;
-  font-size:16px;
+  font-size:clamp(13px, 3.7vw, 16px);
   cursor:pointer;
 }
 
@@ -545,8 +542,8 @@
 .resultBtn:active{background:linear-gradient(#cfd5dc,#bcc4cd);}
 
 @keyframes resultPopIn{
-  from{opacity:0; transform:translateY(8px) scale(0.92);}
-  to{opacity:1; transform:translateY(0) scale(0.92);}
+  from{opacity:0; transform:translateY(8px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 @keyframes resultButtonIn{
