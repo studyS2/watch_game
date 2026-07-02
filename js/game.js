@@ -643,6 +643,56 @@ function clearExistingTimers(){
   }
 }
 
+
+function revealResultDialog(){
+  const resultDialog = overlay.querySelector(".resultDialog");
+  const resultButtons = overlay.querySelector(".resultButtons");
+
+  setTimeout(() => {
+    if(resultDialog){
+      resultDialog.classList.add("show");
+    }
+  }, 500);
+
+  setTimeout(() => {
+    if(resultButtons){
+      resultButtons.classList.add("show");
+    }
+  }, 1500);
+}
+
+function renderResultScreen(isClear){
+  if(isClear){
+    overlay.innerHTML = `
+      <div class="big clearMessage">CLEAR!</div>
+      <div class="resultDialog">
+        <img src="image/resultspeaking.png" alt="">
+        <div class="resultBody">내 방에 허락 없이 들어오지 마.
+오늘 경고 ${level}회야.
+경고 누적되면 강제 퇴거 조치할 거니까 기억해 둬.</div>
+        <div class="resultButtons">
+          <button class="resultBtn" onclick="nextLevel()">다음 레벨</button>
+        </div>
+      </div>
+    `;
+  }else{
+    overlay.innerHTML = `
+      <div class="big failMessage">FAIL...</div>
+      <div class="resultDialog">
+        <img src="image/resultspeaking.png" alt="">
+        <div class="resultBody">하아... 이 집에서 나가.</div>
+        <div class="resultButtons">
+          <button class="resultBtn" onclick="retryLevel()">다시 하기</button>
+          <button class="resultBtn" onclick="restartGame()">처음으로 돌아가기</button>
+        </div>
+      </div>
+    `;
+  }
+
+  revealResultDialog();
+}
+
+
 function finishLevel(){
   gameRunning = false;
   dogActive = false;
@@ -651,29 +701,7 @@ function finishLevel(){
 
   const isClear = watches.every(w => Number(w.dataset.rot) === 0);
   overlay.classList.remove("hidden");
-
-  if(isClear){
-    overlay.innerHTML = `
-      <div class="big clearMessage">CLEAR!</div>
-      <div class="resultText">
-        <b>&lt;차주한&gt;</b><br>
-        내 방에 허락 없이 들어오지 마.<br>
-        오늘 경고 ${level}회야.<br>
-        경고 누적되면 강제 퇴거 조치할 거니까 기억해 둬.
-      </div>
-      <button onclick="nextLevel()">다음 레벨</button>
-    `;
-  }else{
-    overlay.innerHTML = `
-      <div class="big failMessage">FAIL...</div>
-      <div class="resultText">
-        <b>&lt;차주한&gt;</b><br>
-        하아... 이 집에서 나가.
-      </div>
-      <button onclick="retryLevel()">다시 하기</button>
-      <button onclick="restartGame()">처음으로 돌아가기</button>
-    `;
-  }
+  renderResultScreen(isClear);
 }
 
 window.nextLevel = function(){
