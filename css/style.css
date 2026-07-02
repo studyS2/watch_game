@@ -70,7 +70,7 @@
   #hud{
     position:absolute;
     left:18px;
-    top:38px;
+    top:25px;
     min-width:88px;
     height:34px;
     padding:0 14px;
@@ -380,7 +380,7 @@
 .dialogText{
   position:absolute;
   left:3.05%;
-  bottom:14px;
+  bottom:12px;
   right:-4.2%;
   color:#333;
   font-family:"DungGeunMo", monospace;
